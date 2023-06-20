@@ -1,12 +1,24 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
 
-console.log(galleryItems);
-const galleryListItems = document.querySelector('.gallery');
-console.log(galleryListItems);
+const refs = {
+    ul: document.querySelector('.gallery'),
+}
 
-const makeTagsGallery = galleryItems.map(({ preview, original, description }) => {
-    return `<li class="gallery__item">
+const createGallery = makeTagsGallery(galleryItems);
+refs.ul.addEventListener('click', onClickItemGallery);
+
+
+function onClickItemGallery(event) {
+    if (event.currentTarget) { 
+        return;
+    };
+    
+};
+
+function makeTagsGallery(img) {
+    return img.map(({ preview, original, description }) => { 
+        return `<li class="gallery__item">
   <a class="gallery__link" href="${original}">
     <img
       class="gallery__image"
@@ -16,7 +28,21 @@ const makeTagsGallery = galleryItems.map(({ preview, original, description }) =>
     />
   </a>
 </li>`
-}).join('');
- console.log(makeTagsGallery);
+    }).join('');
+   
+};
+ 
 
-galleryListItems.insertAdjacentHTML('beforeend', makeTagsGallery);
+refs.ul.insertAdjacentHTML('beforeend', createGallery);
+
+
+function openModal() {
+ const li = document.querySelector('[data-source]');
+console.log(li.);
+
+	
+
+};
+ 
+
+ 
