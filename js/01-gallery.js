@@ -19,7 +19,7 @@ function onClickItemGallery(event) {
 function makeTagsGallery(img) {
     return img.map(({ preview, original, description }) => { 
         return `<li class="gallery__item">
-  <a class="gallery__link" href="${original}">
+  <a class="gallery__link" href="#">
     <img
       class="gallery__image"
       src="${preview}"
@@ -36,13 +36,13 @@ function makeTagsGallery(img) {
 refs.ul.insertAdjacentHTML('beforeend', createGallery);
 
 
-function openModal() {
- const li = document.querySelector('[data-source]');
-console.log(li.);
+// function openModal() {
+//  const li = document.querySelector('[data-source]');
+// console.log(li.);
 
 	
 
-};
+// };
  
 
  
