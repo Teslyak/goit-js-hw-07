@@ -54,6 +54,7 @@ function openModalImgOriginal(event) {
 function onPressEscClose(event) {
   if (event.code === "Escape") {
     inst.close();
+    window.removeEventListener('keydown', onPressEscClose)
   }
   
   }
