@@ -1,6 +1,7 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
 
+
 const refs = {
     ul: document.querySelector('.gallery'),
 }
@@ -10,10 +11,11 @@ refs.ul.addEventListener('click', onClickItemGallery);
 
 
 function onClickItemGallery(event) {
-    if (event.currentTarget) { 
-        return;
-    };
-    
+  if (event.target.classList.contains('gallery')) { 
+      return;
+  };
+  openModalImgOriginal(event);
+ 
 };
 
 function makeTagsGallery(img) {
@@ -32,17 +34,18 @@ function makeTagsGallery(img) {
    
 };
  
-
 refs.ul.insertAdjacentHTML('beforeend', createGallery);
 
-
-// function openModal() {
-//  const li = document.querySelector('[data-source]');
-// console.log(li.);
-
-	
-
-// };
- 
-
+function openModalImgOriginal(event) {
+  const { alt } = event.target;
+  const dataSource = event.target.dataset.source;
+  const instance = basicLightbox.create(`<img
+      class="gallery__image"
+      src="${dataSource}"
+      data-source="${dataSource}"
+      alt="Image ${alt}"
+    />`
+  )
+  instance.show();
+};
  
