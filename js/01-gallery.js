@@ -1,9 +1,10 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
 
-
+let inst = "";
 const refs = {
-    ul: document.querySelector('.gallery'),
+  ul: document.querySelector('.gallery'),
+  
 }
 
 const createGallery = makeTagsGallery(galleryItems);
@@ -15,7 +16,7 @@ function onClickItemGallery(event) {
       return;
   };
   openModalImgOriginal(event);
- 
+  window.addEventListener('keydown', onPressEscClose)
 };
 
 function makeTagsGallery(img) {
@@ -46,6 +47,16 @@ function openModalImgOriginal(event) {
       alt="Image ${alt}"
     />`
   )
+  inst = instance;
   instance.show();
 };
  
+function onPressEscClose(event) {
+  if (event.code === "Escape") {
+    inst.close();
+  }
+  
+  }
+  
+
+  
