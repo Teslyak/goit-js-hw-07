@@ -1,22 +1,20 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
 
-let inst = "";
+let instance = "";
 const refs = {
   ul: document.querySelector('.gallery'),
-  
 }
 
 const createGallery = makeTagsGallery(galleryItems);
 refs.ul.addEventListener('click', onClickItemGallery);
-
 
 function onClickItemGallery(event) {
   if (event.target.classList.contains('gallery')) { 
       return;
   };
   openModalImgOriginal(event);
-  window.addEventListener('keydown', onPressEscClose)
+  
 };
 
 function makeTagsGallery(img) {
@@ -40,25 +38,30 @@ refs.ul.insertAdjacentHTML('beforeend', createGallery);
 function openModalImgOriginal(event) {
   const { alt } = event.target;
   const dataSource = event.target.dataset.source;
-  const instance = basicLightbox.create(`<img
+  instance = basicLightbox.create(`<img
       class="gallery__image"
       src="${dataSource}"
       data-source="${dataSource}"
       alt="Image ${alt}"
-    />`,
-    
-  )
-  inst = instance;
-  instance.show();
+    />`, {
+    onShow: (instance) => {
+        window.addEventListener('keydown', onPressEscClose);
+    },
+    onClose: (instance) => {
+      window.removeEventListener('keydown', onPressEscClose);
+    }
+  }
+
+  );
+  
+   instance.show();
 };
- 
+
 function onPressEscClose(event) {
   if (event.code === "Escape") {
-    inst.close();
-    window.removeEventListener('keydown', onPressEscClose)
+    instance.close();
   }
-  
-  }
+};
   
 
   
