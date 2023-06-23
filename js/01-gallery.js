@@ -45,7 +45,8 @@ function openModalImgOriginal(event) {
       src="${dataSource}"
       data-source="${dataSource}"
       alt="Image ${alt}"
-    />`
+    />`,
+    
   )
   inst = instance;
   instance.show();

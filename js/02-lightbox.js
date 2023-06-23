@@ -10,30 +10,22 @@ const createGallery = makeTagsGallery(galleryItems);
 
 function makeTagsGallery(img) {
     return img.map(({ preview, original, description }) => { 
-        return `<li class="gallery__item">
-  <a class="gallery__link" href="#">
+      return `<li class="gallery__item">
+        <a class="gallery__link" href="${original}">
     <img
       class="gallery__image"
       src="${preview}"
       alt="Image ${description}"
     />
   </a>
-</li>`
+  </li>
+`
     }).join('');
    
 };
  
 refs.ul.insertAdjacentHTML('beforeend', createGallery);
 
-refs.ul.addEventListener('click', onClickItemGallery);
+let gallery = new SimpleLightbox('.gallery a', {captionsData: `alt`, captionDelay: 250});
 
-
-function onClickItemGallery(event) {
-  if (event.target.classList.contains('gallery')) { 
-      return;
-  };
-    
-};
-
-let galleryNew = new SimpleLightbox('.gallery__item a');
 
