@@ -10,7 +10,7 @@ const createGallery = makeTagsGallery(galleryItems);
 refs.ul.addEventListener('click', onClickItemGallery);
 
 function onClickItemGallery(event) {
-  if (event.target.classList.contains('gallery')) { 
+  if (event.target.nodeName !== "IMG") { 
       return;
   };
   openModalImgOriginal(event);

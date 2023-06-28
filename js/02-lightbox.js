@@ -26,6 +26,6 @@ function makeTagsGallery(img) {
  
 refs.ul.insertAdjacentHTML('beforeend', createGallery);
 
-let gallery = new SimpleLightbox('.gallery a', {captionsData: `alt`, captionDelay: 250});
+const gallery = new SimpleLightbox('.gallery a', {captionsData: `alt`, captionDelay: 250});
 
 
